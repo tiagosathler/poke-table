@@ -1,19 +1,18 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
 import PokeContext from '../contexts/PokeContext';
 
 function Search() {
   const INITIAL_NUMBER = 10;
   const [number, setNumber] = useState(INITIAL_NUMBER);
 
-  const { getPokemonsList, isFetching, error, pokemons } = useContext(PokeContext);
-  const { status, message } = error;
+  const { getPokemonsList } = useContext(PokeContext);
   return (
     <div>
       <label
         htmlFor="pokeqtd"
       >
-        Escolha a quantidade de Pokemons
+        Sorteie outros Pokémons:
+        { ' '}
         <input
           id="pokeqtd"
           type="number"
@@ -28,11 +27,8 @@ function Search() {
         type="button"
         onClick={ () => getPokemonsList(number) }
       >
-        Buscar
+        Sortear
       </button>
-      { isFetching && <h4>Carregando...</h4> }
-      { status && <h4>{ `Erro ao carregar: ${message}` }</h4> }
-      { pokemons.length > 0 && <Redirect to="/table" /> }
     </div>
   );
 }
