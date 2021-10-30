@@ -4,11 +4,14 @@ import './index.css';
 import PokeProvider from './contexts/PokeProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <PokeProvider>
-    <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </PokeProvider>
   </React.StrictMode>,
   document.getElementById('root')
