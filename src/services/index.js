@@ -1,7 +1,7 @@
 const FETCH_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon/?limit=';
 
-const ERROR_FETCH = 'Falha na resposta da requisição';
-const ERROR_FUNCTION = 'Falha na função';
+const ERROR_FETCH = 'Falha na resposta da requisição... tente mais tarde!';
+const ERROR_FUNCTION = 'Falha na função da requisição...';
 
 const QTD_DEFAULT = 150;
 

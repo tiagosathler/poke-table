@@ -5,7 +5,8 @@ function Search() {
   const INITIAL_NUMBER = 10;
   const [number, setNumber] = useState(INITIAL_NUMBER);
 
-  const { getPokemonsList } = useContext(PokeContext);
+  const { getPokemonsList, isFetching, error } = useContext(PokeContext);
+  const { status, message } = error;
   return (
     <div>
       <label
@@ -28,6 +29,8 @@ function Search() {
       >
         Buscar
       </button>
+      { isFetching && <h4>Carregando...</h4> }
+      { status && <h4>{ `Erro ao carregar: ${message}` }</h4> }
     </div>
   );
 }

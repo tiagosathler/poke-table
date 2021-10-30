@@ -14,6 +14,7 @@ function PokeProvider(props) {
       const pokemonsList = await fetchPokemons(qtd);
       setPokemons([...pokemons, ...pokemonsList]);
       setIsFetching(false);
+      setError({ status: false, message: '' });
     } catch (err) {
       setError({ status: true, message: err.message });
       setIsFetching(false);
