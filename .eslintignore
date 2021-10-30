@@ -1,0 +1,4 @@
+**/*.test.js
+src/tests/*
+src/index.js
+src/reportWebVitals.js
