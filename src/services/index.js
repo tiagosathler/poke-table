@@ -11,7 +11,8 @@ export default async function fetchPokemons(qtd = QTD_DEFAULT) {
     if (response.ok) {
       const { results } = await response.json();
       const pokemons = await Promise.all(results.map(async ({ url }) => {
-        const pokemonDetails = await fetch(url);
+        const newResponse = await fetch(url);
+        const pokemonDetails = await newResponse.json();
         return pokemonDetails;
       }));
       return pokemons;
