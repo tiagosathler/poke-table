@@ -5,7 +5,7 @@ const QTD_DEFAULT = 150;
 export function fetchPokemons(qtd = QTD_DEFAULT) {
   fetch(`${FETCH_POKEMONS_URL}${qtd}`)
     .then((response) => (response.ok === true
-      ? Promise.resolve(response.json())
+      ? Promise.resolve(response.json().results)
       : Promise.reject(new Error('Falha na API'))));
 }
 
