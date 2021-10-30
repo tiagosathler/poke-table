@@ -12,7 +12,7 @@ function PokeProvider(props) {
     try {
       setIsFetching(true);
       const pokemonsList = await fetchPokemons(qtd);
-      setPokemons([...pokemons, ...pokemonsList]);
+      setPokemons(pokemonsList);
       setIsFetching(false);
       setError({ status: false, message: '' });
     } catch (err) {
