@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import PokeProvider from './contexts/PokeProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <PokeProvider>
     <App />
+    </PokeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
