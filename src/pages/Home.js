@@ -4,7 +4,7 @@ import PokeContext from '../contexts/PokeContext';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Filters from '../components/Filters';
-import Table from '../components/Table';
+import PokeTable from '../components/PokeTable';
 
 function Home() {
   const {
@@ -25,7 +25,7 @@ function Home() {
       <Header />
       <Search />
       { pokemons.length > 0 && <Filters /> }
-      { pokesRender.length > 0 && pokemons.length > 0 && <Table /> }
+      { pokesRender.length > 0 && pokemons.length > 0 && <PokeTable /> }
       { pokesRender.length === 0 && <h3>Não encontrado</h3> }
       { isFetching && <h4>Carregando...</h4> }
       { hasError && <h4>{ `Erro ao carregar: ${message}` }</h4> }

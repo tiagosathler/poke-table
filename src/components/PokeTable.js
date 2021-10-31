@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+import Table from 'react-bootstrap/Table';
 import PokeContext from '../contexts/PokeContext';
 
-function Table() {
+function PokeTable() {
   const { pokesRender } = useContext(PokeContext);
   return (
-    <table>
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>Índice</th>
@@ -51,9 +52,9 @@ function Table() {
           </tr>
         )) }
       </tbody>
-    </table>
+    </Table>
 
   );
 }
 
-export default Table;
+export default PokeTable;
