@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
+import Form from 'react-bootstrap/Form';
 import PokeContext from '../contexts/PokeContext';
-import Select from './Select';
+import SelectForm from './SelectForm';
+import InputForm from './InputForm';
 import { selectors } from '../services';
 
 function Filters() {
   const [abilities, setAbilities] = useState([]);
   const [types, setTypes] = useState([]);
-  const { pokemons, filter, handleChange } = useContext(PokeContext);
+  const { pokemons, filter } = useContext(PokeContext);
   const { name, ability, type, height, weight } = filter;
 
   useEffect(() => {
@@ -19,46 +21,24 @@ function Filters() {
 
   return (
 
-    <section>
-      <label htmlFor="filterName">
-        Filtra por nome
-        <input
-          id="filterName"
-          type="text"
-          name="name"
-          value={ name }
-          onChange={ handleChange }
+    <section id="filter-section">
+      <Form id="search-form">
+        <InputForm
+          setup={ ['text', 'Nome', 'name', name] }
         />
-      </label>
-      <Select
-        setup={ [abilities, ability, 'Habilidade', 'ability'] }
-      />
-      <Select
-        setup={ [types, type, 'Tipo', 'type'] }
-      />
-      <label htmlFor="filterHeight">
-        Altura mínima
-        <input
-          id="filterHeight"
-          type="number"
-          name="height"
-          min="0"
-          value={ height }
-          onChange={ handleChange }
+        <SelectForm
+          setup={ [abilities, 'Habilidade', 'ability', ability] }
         />
-      </label>
-      <label htmlFor="filterWeight">
-        Peso mínimo
-        <input
-          id="filterWeight"
-          type="number"
-          name="weight"
-          min="0"
-          value={ weight }
-          onChange={ handleChange }
+        <SelectForm
+          setup={ [types, 'Tipo', 'type', type] }
         />
-      </label>
-
+        <InputForm
+          setup={ ['number', 'Altura mínima', 'height', height] }
+        />
+        <InputForm
+          setup={ ['number', 'Peso mínimo', 'weight', weight] }
+        />
+      </Form>
     </section>
 
   );
