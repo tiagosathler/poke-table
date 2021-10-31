@@ -1,15 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import PokeContext from '../contexts/PokeContext';
-import FilterContext from '../contexts/FilterContext';
-import { selectors, apllyFilters } from '../services';
-
 import Select from './Select';
+import { selectors } from '../services';
 
 function Filters() {
   const [abilities, setAbilities] = useState([]);
   const [types, setTypes] = useState([]);
-  const { pokemons, setPokesRender } = useContext(PokeContext);
-  const { filter, handleChange } = useContext(FilterContext);
+  const { pokemons, filter, handleChange } = useContext(PokeContext);
   const { name, ability, type, height, weight } = filter;
 
   useEffect(() => {
@@ -19,11 +16,6 @@ function Filters() {
     const typesList = selectors(pokemons, 'types', 'type');
     setTypes(typesList);
   }, [pokemons]);
-
-  useEffect(() => {
-    const filtered = apllyFilters(filter, pokemons);
-    setPokesRender(filtered);
-  }, [filter]);
 
   return (
 

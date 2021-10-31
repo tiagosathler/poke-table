@@ -1,14 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PokeContext from './PokeContext';
-import { fetchPokemons } from '../services';
+import { fetchPokemons, apllyFilters } from '../services';
 
 function PokeProvider(props) {
   const [pokemons, setPokemons] = useState([]);
-  const [pokesRender, setPokesRender] = useState(pokemons);
 
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState({ hasError: false, message: '' });
+
+  const initialFilter = {
+    name: '',
+    ability: '',
+    type: '',
+    height: 0,
+    weight: 0,
+  };
+  const [filter, setFilter] = useState(initialFilter);
+  const [pokesRender, setPokesRender] = useState(pokemons);
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setFilter({ ...filter, [name]: value });
+  };
+
+  useEffect(() => {
+    const filtered = apllyFilters(filter, pokemons);
+    setPokesRender(filtered);
+  }, [filter]);
 
   const getPokemonsList = async (qtd) => {
     try {
@@ -30,8 +49,10 @@ function PokeProvider(props) {
     pokesRender,
     isFetching,
     error,
+    filter,
+    handleChange,
+    setFilter,
     getPokemonsList,
-    setPokesRender,
   };
   const { children } = props;
 

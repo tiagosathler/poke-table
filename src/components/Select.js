@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import FilterContext from '../contexts/FilterContext';
+import PokeContext from '../contexts/PokeContext';
 
 function Select({ setup }) {
   const [array, value, label, name] = setup;
-  const { handleChange } = useContext(FilterContext);
+  const { handleChange } = useContext(PokeContext);
   return (
     <label htmlFor={ `${name}-id` }>
       { label }

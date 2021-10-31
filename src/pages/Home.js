@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Search from '../components/Search';
 import Filters from '../components/Filters';
 import Table from '../components/Table';
-import FilterProvider from '../contexts/FilterProvider';
 
 function Home() {
   const {
@@ -25,7 +24,7 @@ function Home() {
     <main>
       <Header />
       <Search />
-      { pokemons.length > 0 && <FilterProvider><Filters /></FilterProvider> }
+      { pokemons.length > 0 && <Filters /> }
       { pokesRender.length > 0 && pokemons.length > 0 && <Table /> }
       { pokesRender.length === 0 && <h3>Não encontrado</h3> }
       { isFetching && <h4>Carregando...</h4> }
