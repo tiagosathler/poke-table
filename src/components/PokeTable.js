@@ -55,7 +55,6 @@ function PokeTable() {
         </tbody>
       </Table>
     </section>
-
   );
 }
 

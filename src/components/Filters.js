@@ -20,7 +20,6 @@ function Filters() {
   }, [pokemons]);
 
   return (
-
     <section id="filter-section">
       <Form id="search-form">
         <InputForm
@@ -40,7 +39,6 @@ function Filters() {
         />
       </Form>
     </section>
-
   );
 }
 

@@ -1,13 +1,15 @@
-// A service 'fetchPokemons' busca pela quantidade 'qtd' de Pokémons aleatoriamente
-// da API https://pokeapi.co/ - PokéApi The RESTFul Pokémon API.
-// Se não passar o parâmetro 'qtd' a service retornará 'QTD_DEFAULT' Pokémons (15)
-
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon';
 
 const ERROR_FETCH = 'Falha na resposta da requisição... tente mais tarde!';
 const ERROR_FUNCTION = 'Falha na função da requisição...';
 
 const QTD_DEFAULT = 15;
+
+// A service 'fetchPokemons' busca pela quantidade 'qtd' de Pokémons aleatoriamente
+// da API https://pokeapi.co/ - PokéApi The RESTFul Pokémon API.
+// Se não passar o parâmetro 'qtd' a service retornará 'QTD_DEFAULT' Pokémons (15)
+
+// https://oieduardorabelo.medium.com/javascript-armadilhas-do-asyn-await-em-loops-1cdad44db7f0
 
 export async function fetchPokemons(qtd = QTD_DEFAULT) {
   try {
@@ -49,6 +51,12 @@ export async function fetchPokemons(qtd = QTD_DEFAULT) {
   }
 }
 
+// Função para gerar um array apartir das características desejadas
+// de cada objeto do array (kind e chave type).
+// Isto é necessário para gerar as opções do <select>
+// Exemplo:
+//   kind = abilities ou types - array com as qualidades
+//   type = ability ou type - objeto com as qualidades (name)
 export function selectors(array, kind, type) {
   return array.reduce((acc, { [kind]: arrayKind }) => {
     arrayKind.forEach(({ [type]: { name } }) => {
@@ -60,6 +68,9 @@ export function selectors(array, kind, type) {
   }, []).sort();
 }
 
+// Função para aplicar os filtros ao array de Pokemons
+// EVITAR USÁ-LA! Prefira criar um hook personlizado com essa estrutura
+// Se, no entanto, quiser usar, tente chamá-la em useEffect;
 export function apllyFilters(filters, array) {
   const { name, ability, type, height, weight } = filters;
   let pokemons = [...array];
@@ -87,5 +98,3 @@ export function apllyFilters(filters, array) {
   }
   return pokemons;
 }
-
-// https://oieduardorabelo.medium.com/javascript-armadilhas-do-asyn-await-em-loops-1cdad44db7f0

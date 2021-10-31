@@ -14,7 +14,6 @@ function InputForm(props) {
       label={ label }
       classname="mb-3"
     >
-
       <Form.Control
         id={ `${name}-input` }
         type={ type }
