@@ -7,13 +7,14 @@ function Table() {
     <table>
       <thead>
         <tr>
-          <th>&nbsp;</th>
+          <th>Índice</th>
+          <th>Imagem</th>
           <th>Id</th>
-          <th>Name</th>
-          <th>Abilities</th>
-          <th>Types</th>
-          <th>Height</th>
-          <th>Weight</th>
+          <th>Nome</th>
+          <th>Habilidades</th>
+          <th>Tipos</th>
+          <th>Altura</th>
+          <th>Peso</th>
         </tr>
       </thead>
       <tbody>
@@ -25,22 +26,23 @@ function Table() {
           types,
           height,
           weight,
-        }) => (
+        }, index) => (
           <tr key={ id }>
+            <td>{ index + 1 }</td>
             <td><img src={ sprites.front_default } alt={ name } /></td>
             <td>{ id }</td>
             <td>{ name }</td>
             <td>
               <ol>
-                { abilities.map(({ ability }, index) => (
-                  <li key={ `ability${index}` }>{ ability.name }</li>
+                { abilities.map(({ ability }, idx) => (
+                  <li key={ `ability${idx}` }>{ ability.name }</li>
                 ))}
               </ol>
             </td>
             <td>
               <ol>
-                { types.map(({ type }, index) => (
-                  <li key={ `type${index}` }>{ type.name }</li>
+                { types.map(({ type }, idx) => (
+                  <li key={ `type${idx}` }>{ type.name }</li>
                 ))}
               </ol>
             </td>

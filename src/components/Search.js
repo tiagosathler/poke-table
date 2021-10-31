@@ -11,7 +11,7 @@ function Search() {
       <label
         htmlFor="pokeqtd"
       >
-        Sorteie outros Pokémons:
+        Sorteie Outros Pokémons
         { ' '}
         <input
           id="pokeqtd"

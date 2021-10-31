@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PokeContext from './PokeContext';
-import fetchPokemons from '../services';
+import { fetchPokemons } from '../services';
 
 function PokeProvider(props) {
   const [pokemons, setPokemons] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState({ status: false, message: '' });
+  const [error, setError] = useState({ hasError: false, message: '' });
 
   const getPokemonsList = async (qtd) => {
     try {
       setIsFetching(true);
+      setPokemons([]);
       const pokemonsList = await fetchPokemons(qtd);
       setPokemons(pokemonsList);
       setIsFetching(false);
-      setError({ status: false, message: '' });
+      setError({ hasError: false, message: '' });
     } catch (err) {
-      setError({ status: true, message: err.message });
+      setError({ hasError: true, message: err.message });
       setIsFetching(false);
     }
   };

@@ -9,7 +9,7 @@ const ERROR_FUNCTION = 'Falha na função da requisição...';
 
 const QTD_DEFAULT = 15;
 
-export default async function fetchPokemons(qtd = QTD_DEFAULT) {
+export async function fetchPokemons(qtd = QTD_DEFAULT) {
   try {
     const firstFetch = await fetch(`${POKEAPI_URL}/?limit=1`);
     if (firstFetch.ok) {
@@ -47,6 +47,17 @@ export default async function fetchPokemons(qtd = QTD_DEFAULT) {
     }
     throw err;
   }
+}
+
+export function selectors(array, kind, type) {
+  return array.reduce((acc, { [kind]: arrayKind }) => {
+    arrayKind.forEach(({ [type]: { name } }) => {
+      if (!acc.includes(name)) {
+        acc.push(name);
+      }
+    });
+    return acc;
+  }, []).sort();
 }
 
 // https://oieduardorabelo.medium.com/javascript-armadilhas-do-asyn-await-em-loops-1cdad44db7f0
