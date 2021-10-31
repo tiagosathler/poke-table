@@ -5,6 +5,8 @@ import { fetchPokemons } from '../services';
 
 function PokeProvider(props) {
   const [pokemons, setPokemons] = useState([]);
+  const [pokesRender, setPokesRender] = useState(pokemons);
+
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState({ hasError: false, message: '' });
 
@@ -14,6 +16,7 @@ function PokeProvider(props) {
       setPokemons([]);
       const pokemonsList = await fetchPokemons(qtd);
       setPokemons(pokemonsList);
+      setPokesRender(pokemonsList);
       setIsFetching(false);
       setError({ hasError: false, message: '' });
     } catch (err) {
@@ -24,9 +27,11 @@ function PokeProvider(props) {
 
   const context = {
     pokemons,
+    pokesRender,
     isFetching,
     error,
     getPokemonsList,
+    setPokesRender,
   };
   const { children } = props;
 

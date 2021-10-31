@@ -19,7 +19,7 @@ function FilterProvider(props) {
 
   const { children } = props;
   return (
-    <FilterContext.Provider value={ { ...filter, handleChange } }>
+    <FilterContext.Provider value={ { filter, handleChange } }>
       { children }
     </FilterContext.Provider>
   );

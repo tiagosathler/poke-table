@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PokeContext from '../contexts/PokeContext';
 
 function Table() {
-  const { pokemons } = useContext(PokeContext);
+  const { pokesRender } = useContext(PokeContext);
   return (
     <table>
       <thead>
@@ -18,7 +18,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        { pokemons.map(({
+        { pokesRender.map(({
           id,
           sprites,
           name,

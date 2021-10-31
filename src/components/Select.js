@@ -14,7 +14,7 @@ function Select({ setup }) {
         value={ value }
         onChange={ handleChange }
       >
-        <option value="" disabled hidden>Escolha</option>
+        <option value="">Todos</option>
         { array.map((option) => (
           <option
             key={ option }

@@ -60,4 +60,32 @@ export function selectors(array, kind, type) {
   }, []).sort();
 }
 
+export function apllyFilters(filters, array) {
+  const { name, ability, type, height, weight } = filters;
+  let pokemons = [...array];
+  if (name !== '') {
+    const regex = new RegExp(name, 'ig');
+    pokemons = pokemons.filter(({ name: pokemon }) => pokemon.search(regex) >= 0);
+  }
+  if (ability !== '') {
+    pokemons = pokemons
+      .filter(({ abilities }) => abilities
+        .some(({ ability: abi }) => abi.name === ability));
+  }
+  if (type !== '') {
+    pokemons = pokemons
+      .filter(({ types }) => types
+        .some(({ type: typ }) => typ.name === type));
+  }
+  if (weight > 0) {
+    pokemons = pokemons
+      .filter(({ weight: wei }) => wei >= weight);
+  }
+  if (height > 0) {
+    pokemons = pokemons
+      .filter(({ height: hei }) => hei >= height);
+  }
+  return pokemons;
+}
+
 // https://oieduardorabelo.medium.com/javascript-armadilhas-do-asyn-await-em-loops-1cdad44db7f0
