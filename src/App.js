@@ -1,11 +1,14 @@
 import React from 'react';
-import './App.css';
+import { Switch, Route, Redirect } from 'react-router';
+
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-      Hello World
-    </div>
+    <Switch>
+      <Route exact path="/"><Home /></Route>
+      <Route><Redirect to="/" /></Route>
+    </Switch>
   );
 }
 
