@@ -7,7 +7,7 @@ function InputForm(props) {
   const { setup } = props;
   // acrescente a constante relacionado ao 'value'
   const [type, label, name] = setup;
-
+  // chame ao função callback para controle do estado
   return (
     <FloatingLabel
       htmlFor={ `${name}-input` }
