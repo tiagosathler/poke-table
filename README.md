@@ -5,11 +5,11 @@
 Esta aplicação foi desenvolvida com o intuito de estudar o React Context API e Hooks, usando apenas componentes do tipo Funcionais. 
 A ideia é gerar uma tabela de Pokémons e usar filtros para selecionar os elementos da tabela conforme combinação de critérios (nome, tipo, habilidades, peso e altura).
 
-A branch MASTER está sem a solução: nenhum componente tem estado, não há Context API e nenhum Hook. Apenas a estrutura pronta com os formulários e a tabela.
+A branch MASTER está sem a solução: nenhum componente tem estado, não há Context API e nenhum Hook. Apenas a estrutura pronta com os formulários e a tabela. Estes elementos foram estilizados usando a biblioteca [React-Bootstrap](https://react-bootstrap.github.io/).
 
 Faça um FORK deste repositório e desenvolva sua solução. Fique à vontade! A minha solução pode ser vista na branch _'solucao-tiago-sathler'_. 
 
-A lista de Pokémons é estática, ou seja foi gerada por um array montado. A ideia é consumir a service já pronta que faz uma série de requisições à [PókeAPI](https://pokeapi.co/). A service entrega uma quantidade X de Pókemons aleatoriamente, limitada a 150 no máximo e padrão 15.
+A lista de Pokémons, por enquanto, é estática, ou seja foi gerada por um array montado em _data.js_. A ideia é consumir a service já pronta que faz uma série de requisições à [PókeAPI](https://pokeapi.co/). A service entrega uma quantidade X de Pókemons aleatoriamente, limitada a 150 no máximo e padrão 15.
 
 > _Dizeres do React:_
 # Getting Started with Create React App
