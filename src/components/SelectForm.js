@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import PokeContext from '../contexts/PokeContext';
 
 function SelectForm({ setup }) {
-  const [array, label, name, value] = setup;
-  const { handleChange } = useContext(PokeContext);
+  // acrescente a constante relacionado ao 'value'
+  const [array, label, name] = setup;
+  // chame ao função callback para controle do estado
   return (
     <FloatingLabel
       className="mb-3"
@@ -16,8 +16,7 @@ function SelectForm({ setup }) {
       <Form.Select
         name={ name }
         id={ `${name}-id` }
-        value={ value }
-        onChange={ handleChange }
+        // implemente o select controlado
       >
         <option value="">Todos</option>
         { array.map((option) => (

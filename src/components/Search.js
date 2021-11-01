@@ -1,14 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Button from 'react-bootstrap/Button';
-import PokeContext from '../contexts/PokeContext';
 
 function Search() {
-  const INITIAL_NUMBER = 10;
-  const [number, setNumber] = useState(INITIAL_NUMBER);
-
-  const { getPokemonsList } = useContext(PokeContext);
+  // crie o estado controlado
+  // use a função callback do estado que dispara a ação do botão
   return (
     <section id="draw-section">
       <Form id="draw-form">
@@ -22,14 +19,13 @@ function Search() {
             max="150"
             min="1"
             placeholder="1 a 150"
-            value={ number }
-            onChange={ ({ target: { value } }) => setNumber(value) }
+            // implemente o input controlado
           />
         </FloatingLabel>
         <Button
           type="button"
           variant="primary"
-          onClick={ () => getPokemonsList(number) }
+          // implemente a ação
         >
           Sortear
         </Button>

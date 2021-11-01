@@ -1,41 +1,33 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
-import PokeContext from '../contexts/PokeContext';
+
 import SelectForm from './SelectForm';
 import InputForm from './InputForm';
-import { selectors } from '../services';
+
+import { abilitiesMock as abilities, typesMock as types } from '../data';
 
 function Filters() {
-  const [abilities, setAbilities] = useState([]);
-  const [types, setTypes] = useState([]);
-  const { pokemons, filter } = useContext(PokeContext);
-  const { name, ability, type, height, weight } = filter;
-
-  useEffect(() => {
-    const abilitiesList = selectors(pokemons, 'abilities', 'ability');
-    setAbilities(abilitiesList);
-
-    const typesList = selectors(pokemons, 'types', 'type');
-    setTypes(typesList);
-  }, [pokemons]);
-
+  // implemente o formulário controlado
+  // use as informações do estado
+  // implemente a função de gerar as listas de abilities e types
+  // acrescente as constantes relacionadas aos values dos elementos do form
   return (
     <section id="filter-section">
       <Form id="search-form">
         <InputForm
-          setup={ ['text', 'Nome', 'name', name] }
+          setup={ ['text', 'Nome', 'name'] }
         />
         <SelectForm
-          setup={ [abilities, 'Habilidade', 'ability', ability] }
+          setup={ [abilities, 'Habilidade', 'ability'] }
         />
         <SelectForm
-          setup={ [types, 'Tipo', 'type', type] }
+          setup={ [types, 'Tipo', 'type'] }
         />
         <InputForm
-          setup={ ['number', 'Altura mínima', 'height', height] }
+          setup={ ['number', 'Altura mínima', 'height'] }
         />
         <InputForm
-          setup={ ['number', 'Peso mínimo', 'weight', weight] }
+          setup={ ['number', 'Peso mínimo', 'weight'] }
         />
       </Form>
     </section>

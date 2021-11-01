@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import PokeProvider from './contexts/PokeProvider';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,11 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <PokeProvider>
+    {/* implemente o provider */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </PokeProvider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );

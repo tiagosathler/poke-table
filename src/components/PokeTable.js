@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Table from 'react-bootstrap/Table';
-import PokeContext from '../contexts/PokeContext';
+
+import { pokemonsMock as pokemons } from '../data';
 
 function PokeTable() {
-  const { pokesRender } = useContext(PokeContext);
+  // utilize os pokemons do estado para renderizar
   return (
     <section id="table-section">
       <Table striped bordered hover>
@@ -20,7 +21,7 @@ function PokeTable() {
           </tr>
         </thead>
         <tbody>
-          { pokesRender.map(({
+          { pokemons.map(({
             id,
             sprites,
             name,

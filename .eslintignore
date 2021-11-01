@@ -2,3 +2,4 @@
 src/tests/*
 src/index.js
 src/reportWebVitals.js
+src/data/index.js

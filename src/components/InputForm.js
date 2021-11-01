@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import PropTypes from 'prop-types';
-import PokeContext from '../contexts/PokeContext';
 
 function InputForm(props) {
   const { setup } = props;
-  const [type, label, name, value] = setup;
-  const { handleChange } = useContext(PokeContext);
+  // acrescente a constante relacionado ao 'value'
+  const [type, label, name] = setup;
+
   return (
     <FloatingLabel
       htmlFor={ `${name}-input` }
@@ -18,9 +18,8 @@ function InputForm(props) {
         id={ `${name}-input` }
         type={ type }
         name={ name }
-        value={ value }
         min="0"
-        onChange={ handleChange }
+        // implemente o input controlado
         placeholder={ label }
       />
     </FloatingLabel>

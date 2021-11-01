@@ -1,24 +1,30 @@
 // import React from 'react';
-import React, { useContext, useEffect } from 'react';
-import PokeContext from '../contexts/PokeContext';
+import React from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Filters from '../components/Filters';
 import PokeTable from '../components/PokeTable';
 
+import { pokemonsMock } from '../data';
+
+const MOCK_HOME = {
+  isFetching: false,
+  error: { hasError: false, message: '' },
+  pokemons: pokemonsMock,
+  pokesRender: pokemonsMock,
+};
+
 function Home() {
+  // busque as informações do estado
   const {
-    getPokemonsList,
     isFetching,
     error,
     pokemons,
     pokesRender,
-  } = useContext(PokeContext);
+  } = MOCK_HOME;
   const { hasError, message } = error;
 
-  useEffect(() => {
-    getPokemonsList();
-  }, []);
+  // implemente a chamada a requisição externa (API)
 
   return (
     <main>

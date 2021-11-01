@@ -37,7 +37,20 @@ export async function fetchPokemons(qtd = QTD_DEFAULT) {
       const pokemons = await Promise.all(list.map(async ({ url }) => {
         const thirdFetch = await fetch(url);
         const pokemonDetails = await thirdFetch.json();
-        return pokemonDetails;
+        const {
+          abilities, height, id, name, sprites, types, weight,
+        } = pokemonDetails;
+        const { front_default: frontDefault } = sprites;
+        const obj = {
+          abilities,
+          height,
+          id,
+          name,
+          sprites: { front_default: frontDefault },
+          types,
+          weight,
+        };
+        return obj;
       }));
       // console.log(pokemons);
       return pokemons;
