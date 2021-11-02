@@ -1,9 +1,10 @@
 // import React from 'react';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Filters from '../components/Filters';
 import PokeTable from '../components/PokeTable';
+import PokeContext from '../context/PokeContext';
 
 import { pokemonsMock } from '../data';
 
@@ -25,6 +26,10 @@ function Home() {
   const { hasError, message } = error;
 
   // implemente a chamada a requisição externa (API)
+  const { getPokemons } = useContext(PokeContext);
+  useEffect(() => {
+    getPokemons();
+  }, []);
 
   return (
     <main>
