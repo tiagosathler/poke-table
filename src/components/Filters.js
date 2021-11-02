@@ -17,8 +17,6 @@ function Filters() {
     const typesArray = selectors(pokemons, 'types', 'type');
     setAbilities(abilitiesArray);
     setTypes(typesArray);
-    console.log('ola');
-    console.log(pokemons);
   }, [pokemons]);
 
   const { name, ability, type, height, weight } = filter;

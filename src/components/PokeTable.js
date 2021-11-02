@@ -4,7 +4,7 @@ import PokeContext from '../context/PokeContext';
 
 function PokeTable() {
   // utilize os pokemons do estado para renderizar
-  const { pokemons } = useContext(PokeContext);
+  const { pokesRender } = useContext(PokeContext);
   return (
     <section id="table-section">
       <Table striped bordered hover>
@@ -21,7 +21,7 @@ function PokeTable() {
           </tr>
         </thead>
         <tbody>
-          { pokemons.map(({
+          { pokesRender.map(({
             id,
             sprites,
             name,
