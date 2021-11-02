@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 function SelectForm({ setup }) {
   // acrescente a constante relacionado ao 'value'
-  const [array, label, name] = setup;
+  const [array, label, name, value, handleChange] = setup;
   // chame ao função callback para controle do estado
   return (
     <FloatingLabel
@@ -15,7 +15,9 @@ function SelectForm({ setup }) {
     >
       <Form.Select
         name={ name }
+        onChange={ handleChange }
         id={ `${name}-id` }
+        value={ value }
         // implemente o select controlado
       >
         <option value="">Todos</option>
