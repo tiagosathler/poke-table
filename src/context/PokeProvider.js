@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import PokeContext from './PokeContext';
+import useFilters from '../hooks/useFilters';
 import { fetchPokemons } from '../services';
 
 function PokeProvider(props) {
@@ -13,37 +14,13 @@ function PokeProvider(props) {
   };
   const [filter, setFilter] = useState(INITITAL_FILTER);
   const [pokemons, setPokemons] = useState([]);
-  const [pokesRender, setPokesRender] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState({ hasError: false, message: '' });
+  const [pokesRender, setPokesRender] = useFilters([]);
 
   useEffect(() => {
-    const { name, ability, type, height, weight } = filter;
-    let pokemonsFiltered = [...pokemons];
-    if (name !== '') {
-      pokemonsFiltered = pokemonsFiltered
-        .filter((pokemon) => pokemon.name.includes(name));
-    }
-    if (ability !== '') {
-      pokemonsFiltered = pokemonsFiltered
-        .filter((pokemon) => pokemon.abilities
-          .some((skill) => skill.ability.name === ability));
-    }
-    if (type !== '') {
-      pokemonsFiltered = pokemonsFiltered
-        .filter((pokemon) => pokemon.types
-          .some((skill) => skill.type.name === type));
-    }
-    if (height !== 0) {
-      pokemonsFiltered = pokemonsFiltered
-        .filter((pokemon) => pokemon.height >= height);
-    }
-    if (weight !== 0) {
-      pokemonsFiltered = pokemonsFiltered
-        .filter((pokemon) => pokemon.weight >= weight);
-    }
-    setPokesRender(pokemonsFiltered);
-  }, [filter, pokemons]);
+    setPokesRender(pokemons, filter);
+  }, [pokemons, filter]);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
