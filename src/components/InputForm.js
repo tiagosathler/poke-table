@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function InputForm(props) {
   const { setup } = props;
   // acrescente a constante relacionado ao 'value'
-  const [type, label, name] = setup;
+  const [type, label, name, value, handleChange] = setup;
   // chame ao função callback para controle do estado
   return (
     <FloatingLabel
@@ -19,8 +19,10 @@ function InputForm(props) {
         type={ type }
         name={ name }
         min="0"
+        value={ value }
         // implemente o input controlado
         placeholder={ label }
+        onChange={ handleChange }
       />
     </FloatingLabel>
   );

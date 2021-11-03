@@ -16,6 +16,7 @@ export async function fetchPokemons(qtd = QTD_DEFAULT) {
     const firstFetch = await fetch(`${POKEAPI_URL}/?limit=1`);
     if (firstFetch.ok) {
       const { count } = await firstFetch.json();
+      // console.log(count);
       const array = new Array(Number(qtd)).fill('');
       const offsets = array.reduce((acc) => {
         let offset = Math.ceil(Math.random() * count);
@@ -33,7 +34,6 @@ export async function fetchPokemons(qtd = QTD_DEFAULT) {
         return object;
       }));
       // console.log(list);
-
       const pokemons = await Promise.all(list.map(async ({ url }) => {
         const thirdFetch = await fetch(url);
         const pokemonDetails = await thirdFetch.json();
