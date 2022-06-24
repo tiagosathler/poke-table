@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import PokeContext from './PokeContext';
 import { fetchPokemons } from '../services';
@@ -26,25 +26,26 @@ function PokeProvider(props) {
   };
 
   useEffect(() => {
-    // const filtered = apllyFilters(filter, pokemons);
-    // setPokesRender(filtered);
     setPokesRender(pokemons, filter);
-  }, [filter]);
+  }, [setPokesRender, pokemons, filter]);
 
-  const getPokemonsList = async (qtd) => {
-    try {
-      setIsFetching(true);
-      setPokemons([]);
-      const pokemonsList = await fetchPokemons(qtd);
-      setPokemons(pokemonsList);
-      setPokesRender(pokemonsList);
-      setIsFetching(false);
-      setError({ hasError: false, message: '' });
-    } catch (err) {
-      setError({ hasError: true, message: err.message });
-      setIsFetching(false);
-    }
-  };
+  const getPokemonsList = useCallback(
+    async (qtd) => {
+      try {
+        setIsFetching(true);
+        setPokemons([]);
+        const pokemonsList = await fetchPokemons(qtd);
+        setPokemons(pokemonsList);
+        setPokesRender(pokemonsList);
+        setIsFetching(false);
+        setError({ hasError: false, message: '' });
+      } catch (err) {
+        setError({ hasError: true, message: err.message });
+        setIsFetching(false);
+      }
+    },
+    [setError, setIsFetching, setPokemons, setPokesRender],
+  );
 
   const context = {
     pokemons,

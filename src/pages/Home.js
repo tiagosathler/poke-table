@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import PokeContext from '../contexts/PokeContext';
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -14,11 +14,17 @@ function Home() {
     pokemons,
     pokesRender,
   } = useContext(PokeContext);
+
+  const loadedPokemons = useRef(false);
+
   const { hasError, message } = error;
 
   useEffect(() => {
-    getPokemonsList();
-  }, []);
+    if (!loadedPokemons.current) {
+      getPokemonsList();
+      loadedPokemons.current = true;
+    }
+  }, [getPokemonsList]);
 
   return (
     <main>

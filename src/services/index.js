@@ -25,21 +25,21 @@ export async function fetchPokemons(qtd = QTD_DEFAULT) {
         acc.push(offset);
         return acc;
       }, []);
-      // console.log(offsets);
+      console.log(offsets);
 
       const list = await Promise.all(offsets.map(async (offset) => {
         const secondFetch = await fetch(`${POKEAPI_URL}/?offset=${offset}&limit=1`);
         const { results: [object] } = await secondFetch.json();
         return object;
       }));
-      // console.log(list);
+      console.log(list);
 
       const pokemons = await Promise.all(list.map(async ({ url }) => {
         const thirdFetch = await fetch(url);
         const pokemonDetails = await thirdFetch.json();
         return pokemonDetails;
       }));
-      // console.log(pokemons);
+      console.log(pokemons);
       return pokemons;
     }
     throw new Error(ERROR_FETCH);

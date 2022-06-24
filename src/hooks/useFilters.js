@@ -1,14 +1,15 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 function useFilters(initialState = []) {
   const [pokesFilter, setPokeFilter] = useState([...initialState]);
-  const INITIAL_FILTERS = {
+
+  const INITIAL_FILTERS = useMemo(() => ({
     name: '',
     ability: '',
     type: '',
     height: 0,
     weight: 0,
-  };
+  }), []);
 
   const setFilters = useCallback(
     (pokemons, filter = INITIAL_FILTERS) => {
@@ -39,7 +40,7 @@ function useFilters(initialState = []) {
         }
       }
       setPokeFilter(filtered);
-    },
+    }, [INITIAL_FILTERS],
   );
   return [pokesFilter, setFilters];
 }
